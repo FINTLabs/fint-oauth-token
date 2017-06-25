@@ -41,7 +41,7 @@ func CmdToken(c *cli.Context) {
 	}
 
 	fmt.Println("Put this in the Authorization header in you browser:\n\n")
-	fmt.Printf("Bearer %\n\n", tokenResponse.AccsessToken)
+	fmt.Printf("Bearer %s\n\n", tokenResponse.AccsessToken)
 }
 
 func checkFlags(c *cli.Context) (string, string, string, string) {
