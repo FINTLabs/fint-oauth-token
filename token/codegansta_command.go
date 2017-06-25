@@ -15,20 +15,20 @@ func GetTokenCommand() cli.Command {
 func GetTokenFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.StringFlag{
-			Name:  "username",
+			Name:  FLAG_USERNAME,
 			Usage: "username",
 		},
 		cli.StringFlag{
-			Name:  "password",
+			Name:  FLAG_PASSWORD,
 			Usage: "password",
 
 		},
 		cli.StringFlag{
-			Name:  "client_id",
+			Name:  FLAG_CLIENT_ID,
 			Usage: "OAuth2 client id",
 		},
 		cli.StringFlag{
-			Name:  "client_secret",
+			Name:  FLAG_CLIENT_SECRET,
 			Usage: "OAuth2 client secret",
 		},
 	}

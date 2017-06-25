@@ -12,10 +12,7 @@ import (
 
 func CmdToken(c *cli.Context) {
 
-	clientId := c.String("client_id")
-	clientSecret := c.String("client_secret")
-	username := c.String("username")
-	password := c.String("password")
+	username, password, clientId, clientSecret := checkFlags(c)
 
 	request_url := fmt.Sprintf(IDP_ENDPOINT, clientId, clientSecret)
 
@@ -44,4 +41,33 @@ func CmdToken(c *cli.Context) {
 
 	fmt.Println("Put this in the Authorization header in you browser:\n\n")
 	fmt.Println("Bearer " + tokenResponse.AccsessToken)
+}
+
+func checkFlags(c *cli.Context) (string, string, string, string) {
+
+	var username, password, clientId, clientSecret string
+
+	if len(c.String(FLAG_CLIENT_ID)) > 0 {
+		clientId = c.String(FLAG_CLIENT_ID)
+	} else {
+		panic(fmt.Sprintf("%s is missing", FLAG_CLIENT_ID))
+	}
+
+	if len(c.String(FLAG_CLIENT_SECRET)) > 0 {
+		clientSecret = c.String(FLAG_CLIENT_SECRET)
+	} else {
+		panic(fmt.Sprintf("%s is missing", FLAG_CLIENT_SECRET))
+	}
+	if len(c.String(FLAG_USERNAME)) > 0 {
+		username = c.String(FLAG_USERNAME)
+	} else {
+		panic(fmt.Sprintf("%s is missing", FLAG_USERNAME))
+	}
+	if len(c.String(FLAG_PASSWORD)) > 0 {
+		password = c.String(FLAG_PASSWORD)
+	} else {
+		panic(fmt.Sprintf("%s is missing", FLAG_PASSWORD))
+	}
+
+	return username, password, clientId, clientSecret
 }
