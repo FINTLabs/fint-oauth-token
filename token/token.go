@@ -8,6 +8,7 @@ import (
 	"github.com/codegangsta/cli"
 	"net/http"
 	"io/ioutil"
+	"log"
 )
 
 func CmdToken(c *cli.Context) {
@@ -50,23 +51,23 @@ func checkFlags(c *cli.Context) (string, string, string, string) {
 	if len(c.String(FLAG_CLIENT_ID)) > 0 {
 		clientId = c.String(FLAG_CLIENT_ID)
 	} else {
-		panic(fmt.Sprintf("%s is missing", FLAG_CLIENT_ID))
+		log.Fatal(fmt.Sprintf("%s is missing", FLAG_CLIENT_ID))
 	}
 
 	if len(c.String(FLAG_CLIENT_SECRET)) > 0 {
 		clientSecret = c.String(FLAG_CLIENT_SECRET)
 	} else {
-		panic(fmt.Sprintf("%s is missing", FLAG_CLIENT_SECRET))
+		log.Fatal(fmt.Sprintf("%s is missing", FLAG_CLIENT_SECRET))
 	}
 	if len(c.String(FLAG_USERNAME)) > 0 {
 		username = c.String(FLAG_USERNAME)
 	} else {
-		panic(fmt.Sprintf("%s is missing", FLAG_USERNAME))
+		log.Fatal(fmt.Sprintf("%s is missing", FLAG_USERNAME))
 	}
 	if len(c.String(FLAG_PASSWORD)) > 0 {
 		password = c.String(FLAG_PASSWORD)
 	} else {
-		panic(fmt.Sprintf("%s is missing", FLAG_PASSWORD))
+		log.Fatal(fmt.Sprintf("%s is missing", FLAG_PASSWORD))
 	}
 
 	return username, password, clientId, clientSecret
