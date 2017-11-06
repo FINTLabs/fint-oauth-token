@@ -42,6 +42,8 @@ func CmdToken(c *cli.Context) {
 
 	fmt.Println("Put this in the Authorization header in you browser:\n\n")
 	fmt.Printf("Bearer %s\n\n", tokenResponse.AccsessToken)
+	fmt.Println("\n\nTo refresh, use this refresh token:\n")
+	fmt.Println(tokenResponse.RefreshToken)
 }
 
 func checkFlags(c *cli.Context) (string, string, string, string) {
